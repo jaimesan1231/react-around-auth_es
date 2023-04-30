@@ -5,6 +5,10 @@
   color: white;
   margin-top: 15px;
   text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.form__link:hover {
+  opacity: 0.6;
 }
 @media screen and (max-width: 610px) {
   .form__link {

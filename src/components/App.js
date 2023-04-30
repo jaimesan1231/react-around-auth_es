@@ -12,6 +12,9 @@ import Main from "./Main";
 import Login from "./Login";
 import Register from "./Register";
 import InfoTooltip from "./InfoTooltip";
+import * as auth from "../utils/auth";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -25,6 +28,10 @@ function App() {
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState();
   const [currentUser, setCurrentUser] = React.useState("");
   const [cards, setCards] = React.useState([]);
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [email, setEmail] = React.useState("");
+
+  const navigate = useNavigate();
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -80,6 +87,36 @@ function App() {
       setCards([newCard, ...cards]);
     });
   };
+  const handleTokenCheck = () => {
+    if (localStorage.getItem("jwt")) {
+      const jwt = localStorage.getItem("jwt");
+      auth
+        .checkToken(jwt)
+        .then((res) => {
+          if (res.data) {
+            setEmail(res.data.email);
+            setLoggedIn(true);
+            navigate("/");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+  const handleLogin = () => {
+    setLoggedIn(true);
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setEmail("");
+    setLoggedIn(false);
+  };
+
+  React.useEffect(() => {
+    handleTokenCheck();
+  }, [loggedIn]);
 
   React.useEffect(() => {
     api.getUserInfo().then((data) => {
@@ -94,18 +131,36 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
-        <Header />
-        {/* <Main
-          onEditProfileClick={handleEditProfileClick}
-          onAddPlaceClick={handleAddPlaceClick}
-          onEditAvatarClick={handleEditAvatarClick}
-          onDeleteCardClick={handleDeleteCardClick}
-          onCardClick={handleCardClick}
-          onCardLike={handleCardLike}
-          cards={cards}
-        /> */}
+        <Header handleSignOut={handleSignOut} email={email} />
+        <Routes>
+          <Route
+            path="/"
+            exact
+            element={<ProtectedRoute loggedIn={loggedIn} />}
+          >
+            <Route
+              path="/"
+              element={
+                <Main
+                  onEditProfileClick={handleEditProfileClick}
+                  onAddPlaceClick={handleAddPlaceClick}
+                  onEditAvatarClick={handleEditAvatarClick}
+                  onDeleteCardClick={handleDeleteCardClick}
+                  onCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
+                  cards={cards}
+                />
+              }
+            />
+          </Route>
+          <Route exact path="/signup" element={<Register />} />
+          <Route
+            exact
+            path="/signin"
+            element={<Login handleLogin={handleLogin} />}
+          />
+        </Routes>
         <InfoTooltip />
-        <Register />
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}

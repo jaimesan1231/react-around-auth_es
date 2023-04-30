@@ -1,19 +1,31 @@
 import React from "react";
 import addIcon from "../images/add.svg";
 import accepted from "../images/accepted.jpg";
+import denied from "../images/denied.jpg";
 
-const InfoTooltip = () => {
+const InfoTooltip = ({ error, infoToolOpen, handleClose }) => {
   return (
-    <div className="popup popup_opened">
+    <div className={`popup ${infoToolOpen && "popup_opened"}`}>
       <div className="popup__container infoTooltip">
         <img
           src={addIcon}
           alt="Icono de cerrar"
           className="popup__close-icon popup__close-icon_place_center "
-          // onClick={onClose}
+          onClick={handleClose}
         />
-        <img src={accepted} alt="" className="popup__image" />
-        <h2 className="popup__title">¡Correcto! Ya estás registrado</h2>
+        {error ? (
+          <>
+            <img src={denied} alt="" className="popup__image" />
+            <h2 className="popup__title">
+              Uy, algo salió mal. Por favor, inténtalo de nuevo
+            </h2>
+          </>
+        ) : (
+          <>
+            <img src={accepted} alt="" className="popup__image" />
+            <h2 className="popup__title">¡Correcto! Ya estás registrado</h2>
+          </>
+        )}
       </div>
     </div>
   );
