@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-around-auth_es/static/css/main.14927636.css",
-    "main.js": "/react-around-auth_es/static/js/main.382c68aa.js",
+    "main.css": "/react-around-auth_es/static/css/main.4001b0ba.css",
+    "main.js": "/react-around-auth_es/static/js/main.e12b640a.js",
     "static/js/787.76df427e.chunk.js": "/react-around-auth_es/static/js/787.76df427e.chunk.js",
     "static/media/denied.jpg": "/react-around-auth_es/static/media/denied.ed31265cd720ccd0103b.jpg",
     "static/media/logo.svg": "/react-around-auth_es/static/media/logo.1cbd17bf29e567f9c70f4eaff020a46e.svg",
@@ -12,12 +12,12 @@
     "static/media/burgerMenu.svg": "/react-around-auth_es/static/media/burgerMenu.a46d5c1c53c02d60fc8020a980d10651.svg",
     "static/media/edit.svg": "/react-around-auth_es/static/media/edit.6c7bf05444b9793fdf6e73a2dd202e7e.svg",
     "static/media/add.svg": "/react-around-auth_es/static/media/add.bed8c136e13907f5eefb86d62a5fe29e.svg",
-    "main.14927636.css.map": "/react-around-auth_es/static/css/main.14927636.css.map",
-    "main.382c68aa.js.map": "/react-around-auth_es/static/js/main.382c68aa.js.map",
+    "main.4001b0ba.css.map": "/react-around-auth_es/static/css/main.4001b0ba.css.map",
+    "main.e12b640a.js.map": "/react-around-auth_es/static/js/main.e12b640a.js.map",
     "787.76df427e.chunk.js.map": "/react-around-auth_es/static/js/787.76df427e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.14927636.css",
-    "static/js/main.382c68aa.js"
+    "static/css/main.4001b0ba.css",
+    "static/js/main.e12b640a.js"
   ]
 }
