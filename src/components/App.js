@@ -87,23 +87,7 @@ function App() {
       setCards([newCard, ...cards]);
     });
   };
-  const handleTokenCheck = () => {
-    if (localStorage.getItem("jwt")) {
-      const jwt = localStorage.getItem("jwt");
-      auth
-        .checkToken(jwt)
-        .then((res) => {
-          if (res.data) {
-            setEmail(res.data.email);
-            setLoggedIn(true);
-            navigate("/");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
+
   const handleLogin = () => {
     setLoggedIn(true);
   };
@@ -115,8 +99,25 @@ function App() {
   };
 
   React.useEffect(() => {
+    const handleTokenCheck = () => {
+      if (localStorage.getItem("jwt")) {
+        const jwt = localStorage.getItem("jwt");
+        auth
+          .checkToken(jwt)
+          .then((res) => {
+            if (res.data) {
+              setEmail(res.data.email);
+              setLoggedIn(true);
+              navigate("/");
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    };
     handleTokenCheck();
-  }, [loggedIn]);
+  }, [loggedIn, navigate]);
 
   React.useEffect(() => {
     api.getUserInfo().then((data) => {

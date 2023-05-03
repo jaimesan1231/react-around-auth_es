@@ -15,14 +15,18 @@ const InfoTooltip = ({ error, infoToolOpen, handleClose }) => {
         />
         {error ? (
           <>
-            <img src={denied} alt="" className="popup__image" />
+            <img src={denied} alt="Icono de rechazo" className="popup__image" />
             <h2 className="popup__title">
               Uy, algo salió mal. Por favor, inténtalo de nuevo
             </h2>
           </>
         ) : (
           <>
-            <img src={accepted} alt="" className="popup__image" />
+            <img
+              src={accepted}
+              alt="Icono de aprobación"
+              className="popup__image"
+            />
             <h2 className="popup__title">¡Correcto! Ya estás registrado</h2>
           </>
         )}

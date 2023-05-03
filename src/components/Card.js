@@ -27,7 +27,7 @@ const Card = ({ card, onCardClick, onCardLike, onDeleteCardClick }) => {
       ></button>
       <img
         src={card.link}
-        alt=""
+        alt={`Imagen de ${card.name}`}
         className="card__image"
         onClick={handleClick}
       />

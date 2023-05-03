@@ -4,7 +4,7 @@
   align-items: baseline;
   transition: all 0.3s ease-in-out;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 610px) {
   .header__user-info {
     position: absolute;
     left: 0;

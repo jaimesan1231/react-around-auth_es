@@ -11,7 +11,11 @@ const ImagePopup = ({ isOpen, selectedCard, onClose }) => {
             className="popup__close-icon"
             onClick={onClose}
           />
-          <img src={selectedCard.link} alt="" className="popup__image" />
+          <img
+            src={selectedCard.link}
+            alt={`Imagen de ${selectedCard.name}`}
+            className="popup__image"
+          />
           <p className="popup__image-title">{selectedCard.name}</p>
         </div>
       )}

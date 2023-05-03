@@ -40,7 +40,7 @@ const Login = ({ handleLogin }) => {
     if (location.state === "success") {
       setInfoToolOpen(true);
     }
-  }, []);
+  }, [location]);
   return (
     <>
       <div className="login">

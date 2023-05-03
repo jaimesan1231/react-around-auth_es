@@ -11,9 +11,6 @@ export const register = (password, email) => {
     .then((response) => {
       return response.json();
     })
-    .then((res) => {
-      return res;
-    })
     .catch((err) => console.log(err));
 };
 
@@ -42,7 +39,5 @@ export const checkToken = (token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  })
-    .then((res) => res.json())
-    .then((data) => data);
+  }).then((res) => res.json());
 };

@@ -1,5 +1,5 @@
 {
-  "name": "around-react_es",
+  "name": "react-around-auth_es",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -38,7 +38,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://jaimesan1231.github.io/around-react_es",
+  "homepage": "https://jaimesan1231.github.io/react-around-auth_es",
   "devDependencies": {
     "gh-pages": "^5.0.0"
   }
